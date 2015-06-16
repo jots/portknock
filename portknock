@@ -41,7 +41,10 @@ portknock() {
       IFS=' '
       for port in `echo $ports | cut -d, -f1- --output-delimiter=' '`
       do
-        nc -w 1 $HOST $port
+        # nc -w 1 $HOST $port
+        echo > /dev/udp/$HOST/$port;
+        sleep 0.25
+
       done
       IFS=$old_IFS
       return 0
